@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ 20,21,22]
+        node: [ 20 ]
 
     steps:
     - name: Checkout
@@ -28,3 +28,7 @@ jobs:
       run: |
            yarn
            yarn run test
+
+    - name: Build Docker image
+      run: |
+           docker build -t rocketseat-ci-api:latest .
