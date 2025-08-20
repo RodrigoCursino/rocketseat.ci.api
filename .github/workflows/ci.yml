@@ -20,6 +20,8 @@ jobs:
       with:
         node-version: 20
         cache: 'yarn'
+    
+    - name: Install dependencies and run tests
       run: |
            yarn
            yarn run test
