@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 
 # Instala apenas dependências de produção
-RUN npm ci --omit=dev && npm cache verify
+RUN npm ci && npm cache verify
 
 # Copia o restante do código
 COPY . .
