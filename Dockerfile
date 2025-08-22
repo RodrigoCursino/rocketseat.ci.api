@@ -6,7 +6,7 @@ COPY package.json package-lock.json ./
 
 COPY . .
 
-RUN npm ci --omit=dev && npm cache clean --force
+RUN npm ci --omit=dev && npm cache verify
 RUN npm run build
 
 FROM node:18-alpine3.19
