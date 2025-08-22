@@ -2,7 +2,7 @@ FROM node:18 AS build
 
 WORKDIR /usr/src/app
 
-COPY package.json package.lock ./
+COPY package.json package-lock.json ./
 
 COPY . .
 
