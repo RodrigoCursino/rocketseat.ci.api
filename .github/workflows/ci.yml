@@ -49,6 +49,20 @@ jobs:
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v2
+
+    - name: Build and push Docker images to ECR
+      env:
+        REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        TAG: ${{ steps.generate_tag.outputs.sha }}
+      run: |
+        docker build -t $REGISTRY/rocketseat-ci-api:$TAG .
+        docker push $REGISTRY/rocketseat-ci-api:$TAG
+    
+    # Alternativa para o login no ECR
+    # - name: Build ECR image
+    #   run: |
+    #     docker build -t 132466043431.dkr.ecr.us-east-2.amazonaws.com/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }} .
+    #     docker push 132466043431.dkr.ecr.us-east-2.amazonaws.com/rocketseat-ci-api:${{ steps.generate_tag.outputs.sha }}
     
     # Login no Docker Hub usando variáveis de repositório
     # - name: Login to Docker Hub
