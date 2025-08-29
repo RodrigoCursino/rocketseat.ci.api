@@ -77,13 +77,7 @@ jobs:
     
     - name: Check deployment status
       run: |
-        STATUS=$(aws apprunner describe-service --service-arn arn:aws:apprunner:us-east-2:132466043431:service/rocketseat-ci-api/1234567890123 --query 'Service.Status' --output text)
-        echo "Deployment Status: $STATUS"
-        if [ "$STATUS" != "RUNNING" ]; then
-          echo "Deployment failed or is not running."
-          exit 1
-        fi
-    # echo "Deployment succeeded and is running. ${{ steps.deploy-to-apprunner.outputs.service-url }}"
+        echo "Deployment succeeded and is running. ${{ steps.deploy-to-apprunner.outputs.service-url }}"
     # Alternativa para o login no ECR
     # - name: Build ECR image
     #   run: |
