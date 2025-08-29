@@ -73,7 +73,7 @@ jobs:
         memory: 2
         port: 3000
         image: ${{ steps.build-docker-image.outputs.image }}
-        wait-for-service-stability: true
+        wait-for-service-stability-seconds: 180
     
     - name: Check deployment status
       run: |
