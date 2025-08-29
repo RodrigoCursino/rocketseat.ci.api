@@ -58,6 +58,8 @@ jobs:
       run: |
         docker build -t $REGISTRY/rocketseat-ci-api:$TAG .
         docker push $REGISTRY/rocketseat-ci-api:$TAG
+        docker tag $REGISTRY/rocketseat-ci-api:$TAG $REGISTRY/rocketseat-ci-api:latest
+        docker push $REGISTRY/rocketseat-ci-api:latest
         IMAGE=$(echo $REGISTRY/rocketseat-ci-api:$TAG)
         echo "image=$IMAGE" >> $GITHUB_OUTPUT
 
